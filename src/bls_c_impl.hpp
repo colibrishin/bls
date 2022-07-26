@@ -487,7 +487,6 @@ void blsAggregateSignature(blsSignature *aggSig, const blsSignature *sigVec, mcl
 }
 
 // return -1 if some pubVec[i] is zero else 0
-// Is subroutine of FastAggregateVerify
 int blsAggregatePublicKey(blsPublicKey *aggPub, const blsPublicKey *pubVec, mclSize n)
 {
 	if (n == 0) {
