@@ -99,6 +99,17 @@ namespace mcl
         [DllImport(dllName)] public static extern int blsVerify(in Signature sig, in PublicKey pub, [In]byte[] m, ulong size);
         [DllImport(dllName)] public static extern int blsVerifyPop(in Signature sig, in PublicKey pub);
 
+        // FIXME: This fails somehow. mimic same behaviour in C# works fine.
+        // I suspect problem might related to marshaling.
+        [DllImport(dllName)]
+        public static extern int blsFastAggregateVerify(
+            in Signature sig, 
+            ref PublicKey[] pubVec,
+            ulong n, 
+            in byte[] msg,
+            ulong msgSize);
+
+
         //////////////////////////////////////////////////////////////////////////
         // the following apis will be removed
 
