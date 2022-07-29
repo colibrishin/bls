@@ -490,11 +490,8 @@ void blsAggregateSignature(blsSignature *aggSig, const blsSignature *sigVec, mcl
 // Is subroutine of FastAggregateVerify
 int blsAggregatePublicKey(blsPublicKey *aggPub, const blsPublicKey *pubVec, mclSize n)
 {
-	sem_wait(&blsMutex);
-
 	if (n == 0) {
 		memset(aggPub, 0, sizeof(*aggPub));
-		sem_post(&blsMutex);
 		return 0;
 	}
 	int ret = 0;
@@ -505,7 +502,6 @@ int blsAggregatePublicKey(blsPublicKey *aggPub, const blsPublicKey *pubVec, mclS
 		blsPublicKeyAdd(aggPub, &pubVec[i]);
 	}
 
-	sem_post(&blsMutex);
 	return ret;
 }
 
