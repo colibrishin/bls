@@ -63,6 +63,10 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 3.1.x
+    - uses: actions/download-artifact@v3
+      with:
+        name: bls384_256.dll
+        path: ./
     - run: |
         cd ffi/cs
         dotnet restore bls.sln
@@ -71,7 +75,7 @@ jobs:
         cd ffi/cs
         dotnet build bls.sln --configuration Release --no-restore
     - name: Copy BLS binary
-      run: Copy-Item "./bls384_256.dll" --Destination "./bls-sharp.Tests/bin/Release/netstandard3.1/"
+      run: Copy-Item "./bls384_256.dll" -Destination "./ffi/cs/bls-sharp.Tests/bin/Release/netcoreapp3.1\"
     - name: Test
       run: |
         cd ffi/cs

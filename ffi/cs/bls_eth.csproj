@@ -22,6 +22,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\..\bin\</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -29,7 +30,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 ебґеЈиебЋі x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 пїЅпїЅпїЅпїЅпїЅбЋі x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -39,10 +40,24 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Remove="bls-sharp\*" />
+    <None Remove="bls-sharp\**" />
+    <None Remove="bls-sharp.Tests\**" />
+    <None Remove="tests\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="bls.cs" />
+    <Compile Remove="bls-sharp\**" />
+    <Compile Remove="bls-sharp.Tests\**" />
+    <Compile Remove="tests\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="bls-sharp\**" />
+    <EmbeddedResource Remove="bls-sharp.Tests\**" />
+    <EmbeddedResource Remove="tests\**" />
   </ItemGroup>
 </Project>
